@@ -1,0 +1,6 @@
+hombre(pedro,alta,negro,joven).
+mujer(marta,b,negro,joven).
+gusta(pedro,pop,aventura,tenis).
+gusta(marta,pop,aventura,tenis).
+busca(pedro,alta,negro,joven).
+busca(marta,alta,

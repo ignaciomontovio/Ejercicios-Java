@@ -1,0 +1,6 @@
+numero(1).
+numero(2).
+numero(3).
+producto_cartesiano(X,Y):-numero(X),numero(Y).
+seleccion(X,Y):-producto_cartesiano(X,Y),X<Y.
+maximo(X):-numero(X),not(seleccion(X,_)).

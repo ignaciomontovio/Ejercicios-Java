@@ -1,0 +1,18 @@
+ventas1erSem(pablo,10000).
+ventas1erSem(raul,30000).
+ventas1erSem(ezequiel,100).
+ventas1erSem(ramon,25000).
+ventas2doSem(lisa,25000).
+ventas2doSem(pablo,30000).
+ventas2doSem(raul,25000).
+ventas2doSem(ezequiel,100).
+
+totalVendido(X,T):-ventas1erSem(X,A),A > 20000,ventas2doSem(X,B),B > 20000,T is (A+B)*0.2 .
+totalVendido(X,T):-ventas1erSem(X,A),ventas2doSem(X,B),((A > 20000 , B =< 20000);(A =< 20000 , B > 20000)),T is (A+B)*0.1.
+totalVendido(X,T):-ventas1erSem(X,A),not(ventas2doSem(X,_)),T is (A*0.05).
+totalVendido(X,T):-ventas2doSem(X,B),not(ventas1erSem(X,_)),T is (B*0.05).
+
+liquidacion(X,P):-ventas1erSem(X,P1),ventas2doSem(X,P2),P1>20000,P2>20000,P is (P1+P2)*0.2,!.
+liquidacion(X,P):-ventas1erSem(X,P1),ventas2doSem(X,P2),(P1<20000;P2<20000),P is (P1+P2)*0.1.
+liquidacion(X,P):-(ventas1erSem(X,P1),not(ventas2doSem(X,_)),P is P1*0.05).
+liquidacion(X,P):-(ventas2doSem(X,P2),not(ventas1erSem(X,_)),P is P2*0.05).
